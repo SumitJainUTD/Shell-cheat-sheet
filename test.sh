@@ -4,6 +4,9 @@
 #to run file
 # ./<file>.sh
 
+#create new file
+#touch aaa.txt
+
 #Print Home dir Path
 echo $HOME
 #Output:/Users/sujain
@@ -95,7 +98,7 @@ fi
 
 #######################
 
-CASE STATEMENT
+#CASE STATEMENT
  read -p "Are you 21 or over? Y/N " ANSWER
  case "$ANSWER" in
    [yY] | [yY][eE][sS])
@@ -108,3 +111,52 @@ CASE STATEMENT
      echo "Please enter y/yes or n/no"
      ;;
  esac
+
+#SIMPLE FOR LOOP
+NAMES="AAA BBB CCC DDD"
+for n in $NAMES
+  do
+    echo $n
+done
+
+
+#list all the files in dir
+echo $(ls *.txt)
+echo $(ls new-*.txt)
+
+#FOR LOOP TO RENAME FILES
+FILES=$(ls new-*.txt)
+NEW="new"
+for f in $FILES
+  do
+    echo "Renaming $f to new-$f"
+    mv $f $NEW-$f
+done
+
+#READ A FILE
+LINE=1
+while read -r CURRENT_LINE
+  do
+    echo "$LINE: $CURRENT_LINE"
+    ((LINE++))
+done <"./one.txt"
+
+#FUNCTION
+function hello(){
+  echo "hello world"
+}
+
+hello
+
+#FUNCTION WITH PARAMS
+function sayHello(){
+  echo "Hello I am $1 and I am $2"
+}
+
+sayHello "sumit" "30"
+
+# Create folder and write to a file
+mkdir hello
+touch "hello/world.txt"
+echo "hello world" >> "hello/world.txt"
+
